@@ -34,9 +34,8 @@ Welcome to the Student Data App, a user-friendly platform designed to streamline
    - Check the app regularly to stay informed about academic progress and upcoming events.
   
 ### Video
+https://github.com/shyamshiyani/StudentDataApp/assets/149999914/e4f2153c-3a14-4742-a443-ee8426ce7fc0
 ### Images
-
-
 ![1](https://github.com/shyamshiyani/StudentDataApp/assets/149999914/26af2bd3-208b-4595-9a70-db621fa04324)
 ![2](https://github.com/shyamshiyani/StudentDataApp/assets/149999914/11a8971b-4bed-4f58-ba53-f76b647db0b5)
 ![3](https://github.com/shyamshiyani/StudentDataApp/assets/149999914/8d18485a-637d-48de-aed5-c77233f14c29)
