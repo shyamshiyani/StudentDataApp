@@ -1,6 +1,8 @@
+import 'dart:io';
+
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
+import 'package:student_data_app/Utils/modal.dart';
 
 class Profile_Page extends StatefulWidget {
   const Profile_Page({super.key});
@@ -12,12 +14,13 @@ class Profile_Page extends StatefulWidget {
 class _Profile_PageState extends State<Profile_Page> {
   @override
   Widget build(BuildContext context) {
+    Learner lar = ModalRoute.of(context)!.settings.arguments as Learner;
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Colors.blueAccent,
         leading: GestureDetector(
           onTap: () {
-            Navigator.of(context).pop;
+            Navigator.of(context).pop('/');
           },
           child: const Icon(
             Icons.arrow_back,
@@ -30,12 +33,14 @@ class _Profile_PageState extends State<Profile_Page> {
           "PROFILE",
           style: TextStyle(color: Colors.white),
         ),
-        actions: const [
+        actions: [
           Padding(
             padding: EdgeInsets.all(8.0),
-            child: Icon(
-              Icons.edit,
-              color: Colors.white,
+            child: IconButton(
+              onPressed: () {
+                Navigator.of(context).pushNamed('EditPage', arguments: lar);
+              },
+              icon: Icon(Icons.edit),
             ),
           ),
         ],
@@ -80,31 +85,31 @@ class _Profile_PageState extends State<Profile_Page> {
                       ),
                       height: MediaQuery.of(context).size.height / 3,
                       width: MediaQuery.of(context).size.width / 1.2,
-                      child: const Column(
+                      child: Column(
                         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                         children: [
                           Column(
                             children: [
                               CircleAvatar(
+                                backgroundImage: FileImage(File(lar.savefile)),
                                 radius: 35,
-                                child: Icon(Icons.add),
                               ),
                               Text(
-                                "Student name",
-                                style: TextStyle(
+                                lar.fullName,
+                                style: const TextStyle(
                                     fontSize: 22, color: Colors.black),
                               ),
                               Text(
-                                "std",
-                                style: TextStyle(color: Colors.grey),
+                                lar.id,
+                                style: const TextStyle(color: Colors.grey),
                               ),
                             ],
                           ),
-                          Padding(
+                          const Padding(
                             padding: EdgeInsets.only(left: 20, right: 20),
                             child: Divider(),
                           ),
-                          Row(
+                          const Row(
                             mainAxisAlignment: MainAxisAlignment.center,
                             children: [
                               Expanded(
@@ -151,40 +156,40 @@ class _Profile_PageState extends State<Profile_Page> {
                             borderRadius: BorderRadius.circular(8)),
                         height: 100,
                         width: 340,
-                        child: const Column(
+                        child: Column(
                           mainAxisAlignment: MainAxisAlignment.spaceAround,
                           children: [
                             Padding(
-                              padding:
-                                  EdgeInsets.only(top: 15, left: 12, right: 12),
+                              padding: const EdgeInsets.only(
+                                  top: 15, left: 12, right: 12),
                               child: Row(
                                 children: [
-                                  Padding(
+                                  const Padding(
                                     padding: EdgeInsets.only(right: 12),
                                     child: Icon(Icons.call),
                                   ),
                                   Text(
-                                    "+91 9785463210",
-                                    style: TextStyle(
-                                        fontSize: 20,
+                                    lar.mobielnumber,
+                                    style: const TextStyle(
+                                        fontSize: 18,
                                         fontWeight: FontWeight.bold),
                                   ),
                                 ],
                               ),
                             ),
                             Padding(
-                              padding: EdgeInsets.only(
+                              padding: const EdgeInsets.only(
                                   left: 12, right: 12, bottom: 15),
                               child: Row(
                                 children: [
-                                  Padding(
+                                  const Padding(
                                     padding: EdgeInsets.only(right: 12),
                                     child: Icon(Icons.email),
                                   ),
                                   Text(
-                                    "studentid@123gmail.com",
-                                    style: TextStyle(
-                                        fontSize: 20,
+                                    lar.email,
+                                    style: const TextStyle(
+                                        fontSize: 18,
                                         fontWeight: FontWeight.bold),
                                   ),
                                 ],
